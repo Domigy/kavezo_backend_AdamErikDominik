@@ -38,14 +38,8 @@ export class ConcertService {
   }
 
   async update( @Param('id') id: number,@Body() updateConcertDto: UpdateConcertDto) {
-    const { fellepo, startTime, idotartam , elmarad} = await updateConcertDto;
-    const startTimeDate = new Date(startTime);
-    try{return await this.db.koncert.update({where: {id}, data: {
-      startTime: startTimeDate,
-      fellepo: fellepo,
-      idotartam: idotartam,
-      elmarad: elmarad
-    }});}
+    try{return await this.db.koncert.update({where: {id}, data: updateConcertDto
+    });}
     catch{
       return undefined;
     }
